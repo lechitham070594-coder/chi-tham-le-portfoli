@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lechitham070594-coder.github.io/chi-tham-le-portfoli/sitemap.xml
