@@ -1,17 +1,33 @@
-# Chi Tham Le — Freelancer Portfolio
+# Lê Chí Thắm — Freelancer Portfolio
 
-A lightweight, responsive personal website for freelance marketing services.
+Website portfolio cá nhân giới thiệu dịch vụ freelance **Marketing & Data Support**.
 
-## Pages
-- [Home](index.html)
-- [CV](cv.html) — use **Print / Save as PDF** in the browser to export a PDF.
+## Định vị dịch vụ
 
-## Contact
+- Nhập liệu và Excel cơ bản.
+- Tìm kiếm khách hàng tiềm năng từ nguồn công khai.
+- Nghiên cứu thị trường cơ bản.
+- Nội dung SEO tiếng Việt.
+- Hỗ trợ tổng hợp và trình bày dữ liệu marketing.
+
+## Các trang và sản phẩm mẫu
+
+- [Trang chủ](index.html)
+- [CV](cv.html) — dùng nút in trong trình duyệt để lưu thành PDF.
+- [Bảng dữ liệu khách hàng giả lập](lead-generation-sample.csv)
+- [Báo cáo nghiên cứu thị trường mẫu](market-research.html)
+- [Quy trình xử lý dữ liệu Marketing](marketing-workflow.html)
+- [Bài viết SEO mẫu](bai-viet-ve-sinh-nha-cua.html)
+- [Phạm vi công việc và cách báo giá](pricing.html)
+
+## Xuất bản
+
+Website được cấu hình triển khai qua GitHub Actions tại `.github/workflows/pages.yml`. Việc triển khai thực tế phụ thuộc trạng thái Pages và workflow trong repository.
+
+## Nguyên tắc nội dung
+
+Portfolio không tự nhận kinh nghiệm, bằng cấp, khách hàng hoặc kết quả kinh doanh chưa được xác minh. Dữ liệu trong các bài thực hành được ghi rõ là dữ liệu minh họa. Không công khai dữ liệu mật của khách hàng.
+
+## Liên hệ
+
 [lechitham070594@gmail.com](mailto:lechitham070594@gmail.com)
-
-## Publish with GitHub Pages
-This repository includes a GitHub Actions workflow at `.github/workflows/pages.yml`.
-In the repository, open **Settings → Pages** and set **Build and deployment → Source** to **GitHub Actions**. The workflow will then deploy the site after a push to the default branch.
-
-## Accuracy note
-The portfolio intentionally avoids invented years of experience, qualifications, client names, or performance metrics. Add verified details and real work samples before using it to apply for projects.
