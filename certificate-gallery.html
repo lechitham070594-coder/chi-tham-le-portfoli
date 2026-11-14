@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="description" content="Thư viện bằng cấp và chứng chỉ của Lê Chí Thắm.">
+<title>Thư viện bằng cấp & chứng chỉ | Lê Chí Thắm</title>
+<style>
+:root{--navy:#142b4a;--blue:#2867c7;--ink:#172033;--muted:#617087;--bg:#f3f6fb;--line:#e2e8f0;--soft:#edf4ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Arial,"Segoe UI",sans-serif}
+.wrap{width:min(1000px,92%);margin:auto}
+header{background:linear-gradient(130deg,#142b4a,#285789);color:#fff;padding:42px 0 38px}
+.eyebrow{color:#bdd6f7;text-transform:uppercase;letter-spacing:.12em;font-size:.76rem;font-weight:700}
+h1{font-size:clamp(2rem,5vw,3rem);line-height:1.15;margin:10px 0}
+header p{max-width:700px;color:#e5eefb;margin:0}
+main{padding:30px 0 60px}
+.notice{background:#fff8e9;border-left:4px solid #d89a31;border-radius:8px;padding:12px 15px;color:#614a20;margin-bottom:22px;font-size:.92rem}
+.group{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;margin:0 0 18px;box-shadow:0 8px 28px #182b4b08}
+.group-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.group-icon{width:42px;height:42px;display:grid;place-items:center;background:var(--soft);border-radius:12px;font-size:1.25rem}
+h2{font-size:1.25rem;color:var(--navy);margin:0}
+.count{margin-left:auto;color:var(--muted);font-size:.85rem}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.empty{grid-column:1/-1;border:1px dashed #cbd5e1;background:#fafcff;border-radius:12px;padding:24px;text-align:center;color:var(--muted)}
+.empty strong{display:block;color:#34445d;margin-bottom:4px}
+.item{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.item img{display:block;width:100%;height:190px;object-fit:contain;background:#f8fafc;cursor:zoom-in}
+.item p{margin:0;padding:10px 12px;font-weight:700;font-size:.93rem}
+footer{text-align:center;color:var(--muted);padding:4px 0 28px;font-size:.88rem}
+.lightbox{position:fixed;inset:0;background:#071426ed;display:none;align-items:center;justify-content:center;padding:24px;z-index:10}
+.lightbox.open{display:flex}.lightbox img{max-width:min(1100px,96vw);max-height:88vh;object-fit:contain}
+.close{position:absolute;top:14px;right:18px;border:1px solid #ffffff70;background:#142b4a;color:#fff;border-radius:9px;padding:8px 13px;font-size:1rem;cursor:pointer}
+@media(max-width:600px){.group{padding:17px}.gallery{grid-template-columns:1fr 1fr}.item img{height:145px}}
+@media(max-width:380px){.gallery{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="eyebrow">Hồ sơ năng lực cá nhân</div>
+<h1>Bằng cấp & chứng chỉ</h1>
+<p>Thư viện hình ảnh giấy tờ học tập, chứng nhận đào tạo và các chứng chỉ của Lê Chí Thắm.</p>
+</div></header>
+<main class="wrap">
+<div class="notice"><strong>Lưu ý:</strong> Trang này dành cho người được chia sẻ đường dẫn. Không đăng tải giấy tờ có thông tin nhạy cảm nếu chưa cân nhắc việc chia sẻ công khai.</div>
+<div id="gallery" aria-live="polite"><section class="group"><p>Đang tải thư viện…</p></section></div>
+</main>
+<footer class="wrap">© 2026 Lê Chí Thắm · Thư viện hồ sơ cá nhân</footer>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Xem ảnh lớn">
+<button class="close" type="button" id="close">Đóng ✕</button><img id="large-image" alt="">
+</div>
+<script>
+const icons={"degrees":"🎓","certificates":"🏅","courses":"📘","other":"📄"};
+const labels={"degrees":"Bằng cấp","certificates":"Chứng chỉ","courses":"Chứng nhận khóa học","other":"Giấy chứng nhận khác"};
+const gallery=document.getElementById("gallery");
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function render(data){
+ const groups=["degrees","certificates","courses","other"];
+ gallery.innerHTML=groups.map(key=>{
+  const items=Array.isArray(data[key])?data[key]:[];
+  const content=items.length?items.map(item=>'<article class="item"><img loading="lazy" src="'+esc(item.image)+'" alt="'+esc(item.title||labels[key])+'" data-title="'+esc(item.title||labels[key])+'"><p>'+esc(item.title||"Tài liệu")+'</p></article>').join(''):'<div class="empty"><strong>Chưa có hình ảnh</strong>Ảnh trong nhóm này sẽ được bổ sung sau khi thiết lập kho tải lên.</div>';
+  return '<section class="group"><div class="group-head"><div class="group-icon">'+icons[key]+'</div><h2>'+labels[key]+'</h2><span class="count">'+items.length+' ảnh</span></div><div class="gallery">'+content+'</div></section>';
+ }).join('');
+ gallery.querySelectorAll(".item img").forEach(img=>img.addEventListener("click",()=>openImage(img.src,img.dataset.title)));
+}
+function openImage(src,title){document.getElementById("large-image").src=src;document.getElementById("large-image").alt=title;document.getElementById("lightbox").classList.add("open");}
+function closeImage(){document.getElementById("lightbox").classList.remove("open");document.getElementById("large-image").src="";}
+document.getElementById("close").addEventListener("click",closeImage);
+document.getElementById("lightbox").addEventListener("click",e=>{if(e.target.id==="lightbox")closeImage();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeImage();});
+fetch("certificate-gallery.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error("Không tải được danh sách ảnh");return r.json();}).then(render).catch(()=>{gallery.innerHTML='<section class="group"><p>Chưa thể tải danh sách thư viện. Vui lòng thử lại sau.</p></section>';});
+</script>
+</body></html>
